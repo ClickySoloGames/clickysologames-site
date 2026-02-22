@@ -3,49 +3,135 @@
 <head>
 <meta charset="utf-8">
 <title>ClickySoloGames | Car Parking</title>
-<meta name="description" content="HTML5 browser games developer">
+<meta name="description" content="Independent HTML5 browser game developer">
 <link rel="shortcut icon" href="TemplateData/favicon.ico">
-<link rel="stylesheet" href="TemplateData/style.css">
 
 <style>
-  body { margin: 0; font-family: Arial, sans-serif; line-height: 1.5; padding: 20px; background: #f8f8f8; }
-  h1, h2 { margin-top: 30px; }
-  p { max-width: 900px; }
-  #unity-container { width: 100%; max-width: 1280px; margin: 20px auto; border: 1px solid #ccc; position: relative; }
+  /* Основные стили */
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #eee;
+  }
+
+  a { color: #00bfff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Контейнер страницы */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  h1, h2 {
+    margin-top: 40px;
+    font-weight: 700;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+  }
+
+  p {
+    max-width: 900px;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+  }
+
+  /* Unity блок */
+  #unity-container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 30px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0,0,0,0.7);
+    background: #111;
+    position: relative;
+  }
+
   #unity-canvas { width: 100%; height: auto; display: block; }
-  #unity-loading-bar { width: 100%; background: #ddd; height: 20px; margin-top: 5px; }
-  #unity-progress-bar-full { width: 0%; height: 100%; background: #4caf50; }
-  #unity-warning { margin-top: 10px; color: red; }
-  #fullscreen-button { margin-top: 5px; padding: 5px 10px; cursor: pointer; }
+
+  #unity-loading-bar {
+    width: 80%;
+    margin: 10px auto;
+    height: 20px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  #unity-progress-bar-full {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(to right, #00bfff, #00ffdd);
+    border-radius: 10px;
+    transition: width 0.2s ease;
+  }
+
+  #unity-warning {
+    margin-top: 10px;
+    color: #ff5555;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* Контакты и футер */
+  footer {
+    margin-top: 50px;
+    padding: 20px;
+    background: #1c1c2b;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  }
+
+  footer p {
+    margin: 5px 0;
+    color: #aaa;
+  }
+
 </style>
 </head>
 <body>
 
-<h1>About ClickySoloGames</h1>
-<p>ClickySoloGames is an independent HTML5 browser game developer focused on creating simple and engaging casual games. Our projects are designed to run directly in modern web browsers without installation.</p>
-<p>We experiment with lightweight mechanics, minimalistic visuals, and fast-loading gameplay to ensure accessibility across desktop and mobile platforms.</p>
+<div class="container">
+  <h1>About ClickySoloGames</h1>
+  <p>ClickySoloGames is an independent HTML5 browser game developer focused on creating simple and engaging casual games. Our projects are designed to run directly in modern web browsers without installation.</p>
+  <p>We experiment with lightweight mechanics, minimalistic visuals, and fast-loading gameplay to ensure accessibility across desktop and mobile platforms.</p>
 
-<h1>Games</h1>
-<p>Our games are published on partner platforms such as Y8, and we continue developing new browser-based experiences that will also be available directly on this website.</p>
+  <h2>Games</h2>
+  <p>Our games are published on partner platforms such as Y8, and we continue developing new browser-based experiences that will also be available directly on this website.</p>
 
-<h1>Play our browser game directly online.</h1>
+  <h2>Play our browser game directly online.</h2>
 
-<!-- Unity WebGL Game Container -->
-<div id="unity-container">
-  <canvas id="unity-canvas"></canvas>
-  <div id="unity-loading-bar">
-    <div id="unity-progress-bar-full"></div>
+  <!-- Unity WebGL Game Container -->
+  <div id="unity-container">
+    <canvas id="unity-canvas"></canvas>
+    <div id="unity-loading-bar">
+      <div id="unity-progress-bar-full"></div>
+    </div>
+    <div id="unity-warning"></div>
   </div>
-  <div id="unity-warning"></div>
-  <button id="fullscreen-button">Fullscreen</button>
+
+  <h2>Contacts</h2>
+  <p>For business inquiries or collaboration:</p>
+  <p><a href="mailto:ClickySoloGames@gmail.com">ClickySoloGames@gmail.com</a></p>
+
+  <h2>Privacy Policy</h2>
+  <p>This website does not collect personal data directly.</p>
 </div>
+
+<footer>
+  <p>© ClickySoloGames 2026</p>
+  <p>All rights reserved</p>
+</footer>
 
 <script>
   var container = document.querySelector("#unity-container");
   var canvas = document.querySelector("#unity-canvas");
   var loadingBarFull = document.querySelector("#unity-progress-bar-full");
   var warningBanner = document.querySelector("#unity-warning");
-  var fullscreenButton = document.querySelector("#fullscreen-button");
 
   function unityShowBanner(msg, type) {
     var div = document.createElement('div');
@@ -70,7 +156,6 @@
   };
 
   function resizeCanvas() {
-    // Авто-подгонка по ширине, пропорции 16:9
     var width = container.clientWidth;
     canvas.width = width;
     canvas.height = width * 9 / 16;
@@ -84,19 +169,10 @@
   script.onload = () => {
     createUnityInstance(canvas, config, (progress) => {
       loadingBarFull.style.width = 100 * progress + "%";
-    }).then((unityInstance) => {
-      fullscreenButton.onclick = () => { unityInstance.SetFullscreen(1); };
     }).catch((message) => { alert(message); });
   };
   document.body.appendChild(script);
 </script>
-
-<h2>Contacts</h2>
-<p>For business inquiries or collaboration:</p>
-<p>ClickySoloGames@gmail.com</p>
-
-<h2>Privacy Policy</h2>
-<p>This website does not collect personal data directly.</p>
 
 </body>
 </html>
