@@ -14,3 +14,19 @@ body { padding: 0; margin: 0 }
 #unity-build-title { float: right; margin-right: 10px; line-height: 38px; font-family: arial; font-size: 18px }
 #unity-fullscreen-button { float: right; width: 38px; height: 38px; background: url('fullscreen-button.png') no-repeat center }
 #unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
+#site-logo {
+  position: fixed;       /* закрепляем на экране */
+  top: 20px;             /* отступ сверху */
+  right: 20px;           /* отступ справа */
+  width: 60px;            /* размер логотипа */
+  height: 60px;           /* можно убрать, если пропорции сохранены */
+  z-index: 1000;          /* чтобы был поверх всего */
+  border-radius: 50%;     /* если хочешь, чтобы было круглое */
+  box-shadow: 0 0 10px rgba(0,0,0,0.5); /* небольшая тень */
+  cursor: pointer;        /* курсор как для кнопки */
+  transition: transform 0.2s;
+}
+
+#site-logo:hover {
+  transform: scale(1.1); /* анимация при наведении */
+}
