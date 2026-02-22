@@ -5,155 +5,7 @@
 <title>ClickySoloGames | Browser Games Developer</title>
 <meta name="description" content="ClickySoloGames is an independent browser game developer creating lightweight HTML5 games using Unity WebGL.">
 <link rel="shortcut icon" href="TemplateData/favicon.ico">
-
-<style>
-/* ===================== BASE ===================== */
-body{
-  margin:0;
-  font-family:Segoe UI,Arial,sans-serif;
-  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-  color:#eee;
-}
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:30px 20px;
-}
-h1,h2{
-  text-align:center;
-  margin-bottom:10px;
-}
-p{
-  line-height:1.7;
-  font-size:16px;
-  color:#ddd;
-  text-align:center;
-}
-
-/* ===================== NAV BUTTONS ===================== */
-nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  background:rgba(20,20,30,0.95);
-  display:flex;
-  justify-content:center;
-  padding:10px 0;
-  z-index:999;
-}
-nav button{
-  margin:0 10px;
-  padding:10px 20px;
-  background:#333;
-  color:#fff;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  transition: background 0.2s;
-  font-weight:bold;
-}
-nav button:hover{
-  background:#666;
-}
-
-/* ===================== UNITY ===================== */
-#unity-container{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  background:#111;
-  padding:20px;
-  border-radius:14px;
-  box-shadow:0 0 35px rgba(0,0,0,.8);
-  margin-top:80px;
-}
-#unity-canvas{
-  background:#000;
-  border-radius:10px;
-  max-width:100%;
-}
-#unity-loading-bar{
-  width:80%;
-  height:18px;
-  background:#333;
-  border-radius:10px;
-  overflow:hidden;
-  margin-top:15px;
-}
-#unity-progress-bar-full{
-  width:0%;
-  height:100%;
-  background:linear-gradient(to right,#00bfff,#00ffdd);
-  transition:width .2s;
-}
-#unity-footer{
-  margin-top:12px;
-  color:#aaa;
-  text-align:center;
-}
-
-/* ===================== LOGO ===================== */
-#site-logo{
-  position:fixed;
-  top:20px;
-  right:20px;
-  width:80px;
-  border-radius:50%;
-  box-shadow:0 0 15px rgba(0,0,0,.6);
-  z-index:1000;
-}
-
-/* ===================== SECTIONS ===================== */
-.section{
-  background:#1a1a2e;
-  padding:28px;
-  margin:30px 0;
-  border-radius:14px;
-  box-shadow:0 0 25px rgba(0,0,0,.55);
-}
-
-/* ===================== SCREENSHOTS ===================== */
-.screenshots{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:15px;
-  margin-top:20px;
-}
-.screenshots img{
-  width:200px;
-  border-radius:12px;
-  box-shadow:0 0 20px rgba(0,0,0,0.5);
-  transition: transform 0.2s;
-}
-.screenshots img:hover{
-  transform: scale(1.05);
-}
-
-/* ===================== FOOTER ===================== */
-footer{
-  margin-top:60px;
-  padding:35px 0;
-  background:#141422;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-}
-footer p{
-  margin:4px 0;
-  color:#aaa;
-  text-align:center;
-}
-
-/* ===================== MOBILE ===================== */
-@media(max-width:768px){
-  .container{padding:20px 10px;}
-  .section{padding:20px;}
-  .screenshots img{width:45%;}
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -161,161 +13,143 @@ footer p{
 <img src="TemplateData/mylogo.png" id="site-logo">
 
 <!-- NAVIGATION -->
-<nav>
-  <button data-target="game" id="btn-game">Game</button>
-  <button data-target="future">Future Projects</button>
-  <button data-target="contacts">Contacts</button>
-  <button data-target="terms">Terms of Use</button>
-  <button data-target="privacy">Privacy Policy</button>
+<nav id="top-nav">
+  <button class="nav-btn game-btn" data-target="game-block">Game</button>
+  <button class="nav-btn" data-target="future-block">Future Projects</button>
+  <button class="nav-btn" data-target="contacts-block">Contacts</button>
+  <button class="nav-btn" data-target="terms-block">Terms of Use</button>
+  <button class="nav-btn" data-target="privacy-block">Privacy Policy</button>
 </nav>
 
 <div class="container">
 
-<!-- ABOUT -->
-<div class="section" id="section-about">
-<h1>ClickySoloGames</h1>
-<p>ClickySoloGames is an independent browser game developer creating lightweight, fast-loading HTML5 games playable directly in modern browsers.</p>
-<p>Our goal is to design simple and engaging gameplay optimized for desktop and mobile without installation.</p>
-</div>
+  <!-- ABOUT -->
+  <div class="section">
+    <h1>ClickySoloGames</h1>
+    <p>ClickySoloGames is an independent browser game developer focused on creating lightweight, fast-loading and accessible HTML5 games playable directly in modern browsers.</p>
+    <p>The goal is to design simple and engaging gameplay experiences optimized for both desktop and mobile devices without requiring installation.</p>
+  </div>
 
-<!-- TECHNOLOGY -->
-<div class="section" id="section-technology">
-<h2>Technology</h2>
-<p>Projects are developed using Unity WebGL and modern browser technologies with strong focus on performance and cross-platform compatibility.</p>
-<p>Games are designed to run smoothly across different screen resolutions and devices.</p>
-</div>
+  <!-- TECHNOLOGY -->
+  <div class="section">
+    <h2>Technology</h2>
+    <p>Projects are developed using Unity WebGL and modern browser technologies with strong focus on performance optimization and cross-platform compatibility.</p>
+    <p>Games are designed to run smoothly across different screen resolutions and devices.</p>
+  </div>
 
-<!-- GAME -->
-<div class="section" id="section-game">
-<h2>Car Parking</h2>
-<p>Casual browser puzzle game built with Unity WebGL</p>
+  <!-- GAME -->
+  <div class="section" id="game-block">
+    <h2>Car Parking</h2>
+    <p>Casual browser puzzle game built with Unity WebGL</p>
 
-<div id="unity-container">
-  <canvas id="unity-canvas"></canvas>
-  <div id="unity-loading-bar"><div id="unity-progress-bar-full"></div></div>
-  <div id="unity-footer">ClickySoloGames Project</div>
-</div>
+    <div id="unity-container">
+      <canvas id="unity-canvas"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-progress-bar-full"></div>
+      </div>
+      <div id="unity-footer">ClickySoloGames Project</div>
+    </div>
 
-<p>Car Parking is a lightweight puzzle-style browser game where players move vehicles in the correct order to clear the parking area.</p>
-<p>The gameplay focuses on logical thinking and short casual sessions.</p>
+    <!-- Screenshots -->
+    <div class="screenshots">
+      <img src="TemplateData/screenshots/shot1.png" alt="Car Parking gameplay screenshot 1">
+      <img src="TemplateData/screenshots/shot2.png" alt="Car Parking gameplay screenshot 2">
+      <img src="TemplateData/screenshots/shot3.png" alt="Car Parking gameplay screenshot 3">
+      <img src="TemplateData/screenshots/shot4.png" alt="Car Parking gameplay screenshot 4">
+    </div>
 
-<!-- Screenshots BELOW text -->
-<div class="screenshots">
-<img src="TemplateData/screenshots/shot1.png" alt="Car Parking gameplay screenshot 1">
-<img src="TemplateData/screenshots/shot2.png" alt="Car Parking gameplay screenshot 2">
-<img src="TemplateData/screenshots/shot3.png" alt="Car Parking gameplay screenshot 3">
-<img src="TemplateData/screenshots/shot4.png" alt="Car Parking gameplay screenshot 4">
-</div>
+    <p>Car Parking is a lightweight puzzle-style browser game where players need to move vehicles in the correct order to clear the parking area.</p>
+    <p>The gameplay focuses on logical thinking and short casual sessions.</p>
+  </div>
 
-</div>
+  <!-- FUTURE PROJECTS -->
+  <div class="section" id="future-block">
+    <h2>Future Projects</h2>
+    <p>New browser games are currently in development and will be published on this website.</p>
+  </div>
 
-<!-- FUTURE -->
-<div class="section" id="section-future">
-<h2>Future Projects</h2>
-<p>New browser games are currently in development and will be published on this website.</p>
-</div>
+  <!-- CONTACTS -->
+  <div class="section" id="contacts-block">
+    <h2>Contacts</h2>
+    <p>ClickySoloGames@gmail.com</p>
+  </div>
 
-<!-- CONTACTS -->
-<div class="section" id="section-contacts">
-<h2>Contacts</h2>
-<p>ClickySoloGames@gmail.com</p>
-</div>
+  <!-- TERMS OF USE -->
+  <div class="section" id="terms-block">
+    <h2>Terms of Use</h2>
+    <p>All content published on this website, including games and visual assets, is provided for entertainment purposes only.</p>
+    <p>Unauthorized copying or redistribution of materials without permission is prohibited.</p>
+  </div>
 
-<!-- TERMS -->
-<div class="section" id="section-terms">
-<h2>Terms of Use</h2>
-<p>All content published on this website, including games and visual assets, is provided for entertainment purposes only.</p>
-</div>
-
-<!-- PRIVACY -->
-<div class="section" id="section-privacy">
-<h2>Privacy Policy</h2>
-<p>This website does not collect personal data directly.</p>
-<p>Third-party services like ads or analytics may use cookies to improve content and advertising relevance.</p>
-<p>Users can control cookies via browser settings.</p>
-</div>
+  <!-- PRIVACY POLICY -->
+  <div class="section" id="privacy-block">
+    <h2>Privacy Policy</h2>
+    <p>This website does not collect personal data directly.</p>
+    <p>In the future, this website may use third-party services such as advertising networks or analytics tools that may use cookies to improve content and advertising relevance.</p>
+    <p>Users can control cookie behavior through their browser settings.</p>
+  </div>
 
 </div>
 
 <footer>
-<p>© ClickySoloGames 2026</p>
-<p>All rights reserved</p>
+  <p>© ClickySoloGames 2026</p>
+  <p>All rights reserved</p>
 </footer>
 
 <script>
-// ===================== UNITY LOADER =====================
-var canvas = document.querySelector("#unity-canvas");
-var loadingBarFull = document.querySelector("#unity-progress-bar-full");
+  // ================= UNITY =================
+  const canvas = document.querySelector("#unity-canvas");
+  const loadingBarFull = document.querySelector("#unity-progress-bar-full");
+  const buildUrl = "Build";
+  const loaderUrl = buildUrl + "/BuildWithoutCompression.loader.js";
 
-var buildUrl = "Build";
-var loaderUrl = buildUrl + "/BuildWithoutCompression.loader.js";
+  const config = {
+    dataUrl: buildUrl + "/BuildWithoutCompression.data",
+    frameworkUrl: buildUrl + "/BuildWithoutCompression.framework.js",
+    codeUrl: buildUrl + "/BuildWithoutCompression.wasm",
+    streamingAssetsUrl: "StreamingAssets",
+    companyName: "ClickySoloGames",
+    productName: "Car Parking",
+    productVersion: "0.1",
+    devicePixelRatio: Math.min(2, window.devicePixelRatio || 1),
+  };
 
-var config = {
-  dataUrl: buildUrl + "/BuildWithoutCompression.data",
-  frameworkUrl: buildUrl + "/BuildWithoutCompression.framework.js",
-  codeUrl: buildUrl + "/BuildWithoutCompression.wasm",
-  streamingAssetsUrl: "StreamingAssets",
-  companyName: "ClickySoloGames",
-  productName: "Car Parking",
-  productVersion: "0.1",
-  devicePixelRatio: Math.min(2,window.devicePixelRatio||1),
-};
-
-function resizeCanvas(){
-  const padding = 20;
-  let width = window.innerWidth - padding*2;
-  let height = width*9/16;
-  const maxHeight = window.innerHeight*0.75;
-  if(height>maxHeight){
-    height = maxHeight;
-    width = height*16/9;
-  }
-  canvas.style.width = width + "px";
-  canvas.style.height = height + "px";
-}
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
-
-var script=document.createElement("script");
-script.src=loaderUrl;
-script.onload=()=>{
-  createUnityInstance(canvas,config,(progress)=>{
-    loadingBarFull.style.width=100*progress+"%";
-  });
-};
-document.body.appendChild(script);
-
-// ===================== NAVIGATION SCROLL =====================
-const navButtons = document.querySelectorAll('nav button');
-const sections = {
-  game: document.querySelector('#section-game'),
-  future: document.querySelector('#section-future'),
-  contacts: document.querySelector('#section-contacts'),
-  terms: document.querySelector('#section-terms'),
-  privacy: document.querySelector('#section-privacy')
-};
-
-navButtons.forEach(btn=>{
-  btn.addEventListener('click', e=>{
-    const target = e.target.dataset.target;
-    const block = sections[target];
-    if(!block) return;
-
-    let scrollTop;
-    if(target === 'game'){
-      const rect = block.getBoundingClientRect();
-      scrollTop = window.pageYOffset + (rect.top + rect.height/2) - (window.innerHeight/2);
-    } else {
-      const offset = 80;
-      scrollTop = window.pageYOffset + block.getBoundingClientRect().top - offset;
+  function resizeCanvas() {
+    let padding = 20;
+    let width = window.innerWidth - padding;
+    let height = width * 9 / 16;
+    let maxHeight = window.innerHeight * 0.8;
+    if (height > maxHeight) {
+      height = maxHeight;
+      width = height * 16 / 9;
     }
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+  }
 
-    window.scrollTo({
-      top: scrollTop,
-      behavior: 'smooth'
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
+
+  const script = document.createElement("script");
+  script.src = loaderUrl;
+  script.onload = () => {
+    createUnityInstance(canvas, config, (progress) => {
+      loadingBarFull.style.width = 100 * progress + "%";
+    });
+  };
+  document.body.appendChild(script);
+
+  // ================= NAVIGATION SCROLL =================
+  const navButtons = document.querySelectorAll(".nav-btn");
+  navButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const target = document.getElementById(btn.dataset.target);
+      if(target){
+        const yOffset = (btn.dataset.target === "game-block") ? - (window.innerHeight/2 - target.offsetHeight/2) : -80;
+        window.scrollTo({top: target.offsetTop + yOffset, behavior: 'smooth'});
+      }
     });
   });
-});
 </script>
 
 </body>
