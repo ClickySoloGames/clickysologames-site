@@ -57,7 +57,7 @@ a:hover { text-decoration: underline; }
 /* ==================== Unity контейнер ==================== */
 #unity-container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1280px; /* ограничение ширины */
   margin: 30px auto;
   border-radius: 12px;
   overflow: hidden;
@@ -210,10 +210,12 @@ var config = {
     devicePixelRatio: 1
 };
 
-// Функция адаптивного ресайза Canvas
+// Адаптивный ресайз Canvas с ограничением ширины
 function resizeUnityCanvas() {
-    const width = container.clientWidth;
-    const height = width * 9 / 16; // пропорция 16:9
+    const containerWidth = container.clientWidth;
+    const maxWidth = 1280; // ограничение
+    const width = Math.min(containerWidth, maxWidth);
+    const height = width * 9 / 16; // 16:9
     canvas.style.width = width + "px";
     canvas.style.height = height + "px";
 }
