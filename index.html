@@ -14,31 +14,31 @@
 
 <!-- NAVIGATION -->
 <nav>
-  <button id="btn-game" onclick="scrollToSection('game')">Game</button>
-  <button onclick="scrollToSection('future')">Future Projects</button>
-  <button onclick="scrollToSection('contacts')">Contacts</button>
-  <button onclick="scrollToSection('terms')">Terms of Use</button>
-  <button onclick="scrollToSection('privacy')">Privacy Policy</button>
+  <button data-target="game" id="btn-game">Game</button>
+  <button data-target="future">Future Projects</button>
+  <button data-target="contacts">Contacts</button>
+  <button data-target="terms">Terms of Use</button>
+  <button data-target="privacy">Privacy Policy</button>
 </nav>
 
 <div class="container">
 
   <!-- ABOUT -->
-  <div class="section" id="about">
+  <div class="section" id="section-about">
     <h1>ClickySoloGames</h1>
-    <p>ClickySoloGames is an independent browser game developer focused on creating lightweight, fast-loading and accessible HTML5 games playable directly in modern browsers.</p>
-    <p>The goal is to design simple and engaging gameplay experiences optimized for both desktop and mobile devices without requiring installation.</p>
+    <p>Independent browser game developer focused on lightweight, fast-loading HTML5 games playable directly in modern browsers.</p>
+    <p>Our goal is to create simple, engaging gameplay optimized for desktop and mobile devices without installation.</p>
   </div>
 
   <!-- TECHNOLOGY -->
-  <div class="section">
+  <div class="section" id="section-tech">
     <h2>Technology</h2>
-    <p>Projects are developed using Unity WebGL and modern browser technologies with strong focus on performance optimization and cross-platform compatibility.</p>
-    <p>Games are designed to run smoothly across different screen resolutions and devices.</p>
+    <p>Projects are developed using Unity WebGL and modern browser technologies with focus on performance and cross-platform compatibility.</p>
+    <p>Games run smoothly across different screen resolutions and devices.</p>
   </div>
 
   <!-- GAME -->
-  <div class="section" id="game">
+  <div class="section" id="section-game">
     <h2>Car Parking</h2>
     <p>Casual browser puzzle game built with Unity WebGL</p>
 
@@ -52,10 +52,10 @@
 
     <!-- Screenshots -->
     <div class="screenshots">
-      <img src="TemplateData/screenshots/shot1.png" alt="Car Parking screenshot 1">
-      <img src="TemplateData/screenshots/shot2.png" alt="Car Parking screenshot 2">
-      <img src="TemplateData/screenshots/shot3.png" alt="Car Parking screenshot 3">
-      <img src="TemplateData/screenshots/shot4.png" alt="Car Parking screenshot 4">
+      <img src="TemplateData/screenshots/shot1.png" alt="Car Parking gameplay screenshot 1">
+      <img src="TemplateData/screenshots/shot2.png" alt="Car Parking gameplay screenshot 2">
+      <img src="TemplateData/screenshots/shot3.png" alt="Car Parking gameplay screenshot 3">
+      <img src="TemplateData/screenshots/shot4.png" alt="Car Parking gameplay screenshot 4">
     </div>
 
     <p>Car Parking is a lightweight puzzle-style browser game where players need to move vehicles in the correct order to clear the parking area.</p>
@@ -63,29 +63,29 @@
   </div>
 
   <!-- FUTURE PROJECTS -->
-  <div class="section" id="future">
+  <div class="section" id="section-future">
     <h2>Future Projects</h2>
     <p>New browser games are currently in development and will be published on this website.</p>
   </div>
 
   <!-- CONTACTS -->
-  <div class="section" id="contacts">
+  <div class="section" id="section-contacts">
     <h2>Contacts</h2>
     <p>ClickySoloGames@gmail.com</p>
   </div>
 
-  <!-- TERMS OF USE -->
-  <div class="section" id="terms">
+  <!-- TERMS -->
+  <div class="section" id="section-terms">
     <h2>Terms of Use</h2>
     <p>All content published on this website, including games and visual assets, is provided for entertainment purposes only.</p>
-    <p>Unauthorized copying or redistribution of materials without permission is prohibited.</p>
+    <p>Unauthorized copying or redistribution without permission is prohibited.</p>
   </div>
 
-  <!-- PRIVACY POLICY -->
-  <div class="section" id="privacy">
+  <!-- PRIVACY -->
+  <div class="section" id="section-privacy">
     <h2>Privacy Policy</h2>
     <p>This website does not collect personal data directly.</p>
-    <p>In the future, this website may use third-party services such as advertising networks or analytics tools that may use cookies to improve content and advertising relevance.</p>
+    <p>Third-party services such as advertising networks or analytics tools may use cookies to improve content and advertising relevance.</p>
     <p>Users can control cookie behavior through their browser settings.</p>
   </div>
 
@@ -97,13 +97,11 @@
 </footer>
 
 <script>
-// ================== UNITY ==================
+// ===================== UNITY WEBGL =====================
 var canvas=document.querySelector("#unity-canvas");
 var loadingBarFull=document.querySelector("#unity-progress-bar-full");
-
 var buildUrl="Build";
 var loaderUrl=buildUrl+"/BuildWithoutCompression.loader.js";
-
 var config={
   dataUrl:buildUrl+"/BuildWithoutCompression.data",
   frameworkUrl:buildUrl+"/BuildWithoutCompression.framework.js",
@@ -119,11 +117,8 @@ function resizeCanvas(){
   let padding=20;
   let width=window.innerWidth-padding;
   let height=width*9/16;
-  let maxHeight=window.innerHeight*0.8;
-  if(height>maxHeight){
-    height=maxHeight;
-    width=height*16/9;
-  }
+  let maxHeight=window.innerHeight*0.75; // учёт адресной строки на мобильных
+  if(height>maxHeight){ height=maxHeight; width=height*16/9; }
   canvas.style.width=width+"px";
   canvas.style.height=height+"px";
 }
@@ -140,13 +135,50 @@ script.onload=()=>{
 };
 document.body.appendChild(script);
 
-// ================== SMOOTH SCROLL ==================
-function scrollToSection(id){
-  const el=document.getElementById(id);
-  const offset=70; // небольшой отступ сверху
-  const topPos=el.getBoundingClientRect().top + window.pageYOffset - offset;
-  window.scrollTo({top:topPos, behavior:'smooth'});
+// ===================== SMOOTH SCROLL & CENTER GAME =====================
+const navButtons = document.querySelectorAll('nav button');
+const sections = {
+  game: document.querySelector('#section-game'),
+  future: document.querySelector('#section-future'),
+  contacts: document.querySelector('#section-contacts'),
+  terms: document.querySelector('#section-terms'),
+  privacy: document.querySelector('#section-privacy')
+};
+
+navButtons.forEach(btn=>{
+  btn.addEventListener('click', e=>{
+    const target=e.target.dataset.target;
+    if(target==='game'){
+      const block=sections[target];
+      const rect=block.getBoundingClientRect();
+      const scrollTop=window.pageYOffset||document.documentElement.scrollTop;
+      const blockMiddle=rect.top+scrollTop-(window.innerHeight/2)+(rect.height/2);
+      window.scrollTo({top:blockMiddle, behavior:'smooth'});
+    }else{
+      const block=sections[target];
+      const offset=80;
+      const scrollTop=window.pageYOffset||document.documentElement.scrollTop;
+      const blockTop=block.getBoundingClientRect().top+scrollTop-offset;
+      window.scrollTo({top:blockTop, behavior:'smooth'});
+    }
+  });
+});
+
+// ===================== ACTIVE BUTTON HIGHLIGHT =====================
+function highlightNavButton(){
+  const scrollPos=window.scrollY+window.innerHeight/3;
+  for(const key in sections){
+    const sec=sections[key];
+    const top=sec.offsetTop;
+    const bottom=top+sec.offsetHeight;
+    const btn=document.querySelector(`nav button[data-target="${key}"]`);
+    if(scrollPos>=top && scrollPos<bottom){ btn.style.background='#00bfff'; }
+    else{ btn.style.background=(btn.id==='btn-game')?'#00bfff':'#444'; }
+  }
 }
+window.addEventListener('scroll',highlightNavButton);
+window.addEventListener('resize',highlightNavButton);
+highlightNavButton();
 </script>
 
 </body>
