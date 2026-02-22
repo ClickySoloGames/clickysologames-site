@@ -35,7 +35,7 @@ p{
   text-align:center;
 }
 
-/* ===================== SECTIONS ===================== */
+/* ===================== CARDS ===================== */
 
 .section{
   background:#1a1a2e;
@@ -102,22 +102,18 @@ p{
 
 .screenshots{
   display:flex;
+  justify-content:center;
   flex-wrap:wrap;
   gap:15px;
-  justify-content:center;
-  margin-top:20px;
+  margin-top:15px;
+  margin-bottom:15px;
 }
 
 .screenshots img{
   width:240px;
-  max-width:100%;
-  border-radius:14px;
+  height:auto;
+  border-radius:12px;
   box-shadow:0 0 15px rgba(0,0,0,.5);
-  transition:.25s;
-}
-
-.screenshots img:hover{
-  transform:scale(1.05);
 }
 
 /* ===================== FOOTER ===================== */
@@ -142,7 +138,6 @@ footer p{
 /* ===================== MOBILE ===================== */
 
 @media(max-width:768px){
-
   .container{
     padding:20px 10px;
   }
@@ -151,6 +146,9 @@ footer p{
     padding:20px;
   }
 
+  .screenshots img{
+    width:45%;
+  }
 }
 
 </style>
@@ -165,116 +163,71 @@ footer p{
 <!-- ABOUT -->
 <div class="section">
 <h1>ClickySoloGames</h1>
-
-<p>
-ClickySoloGames is an independent browser game developer focused on creating lightweight,
-fast-loading and accessible HTML5 games playable directly in modern browsers.
-</p>
-
-<p>
-The goal is to design simple and engaging gameplay experiences optimized for both desktop
-and mobile devices without requiring installation.
-</p>
+<p>ClickySoloGames is an independent browser game developer focused on creating lightweight, fast-loading and accessible HTML5 games playable directly in modern browsers.</p>
+<p>The goal is to design simple and engaging gameplay experiences optimized for both desktop and mobile devices without requiring installation.</p>
 </div>
 
 <!-- TECHNOLOGY -->
 <div class="section">
 <h2>Technology</h2>
-
-<p>
-Projects are developed using Unity WebGL and modern browser technologies with strong
-focus on performance optimization and cross-platform compatibility.
-</p>
-
-<p>
-Games are designed to run smoothly across different screen resolutions and devices.
-</p>
+<p>Projects are developed using Unity WebGL and modern browser technologies with strong focus on performance optimization and cross-platform compatibility.</p>
+<p>Games are designed to run smoothly across different screen resolutions and devices.</p>
 </div>
 
 <!-- GAME -->
 <div class="section">
-
 <h2>Car Parking</h2>
 <p>Casual browser puzzle game built with Unity WebGL</p>
 
 <div id="unity-container">
-
-<canvas id="unity-canvas"></canvas>
-
-<div id="unity-loading-bar">
-<div id="unity-progress-bar-full"></div>
+  <canvas id="unity-canvas"></canvas>
+  <div id="unity-loading-bar">
+    <div id="unity-progress-bar-full"></div>
+  </div>
+  <div id="unity-footer">ClickySoloGames Project</div>
 </div>
 
-<div id="unity-footer">ClickySoloGames Project</div>
-
+<!-- Screenshots (выше текста) -->
+<div class="screenshots">
+  <img src="TemplateData/screenshots/shot1.png" alt="Car Parking gameplay screenshot 1">
+  <img src="TemplateData/screenshots/shot2.png" alt="Car Parking gameplay screenshot 2">
+  <img src="TemplateData/screenshots/shot3.png" alt="Car Parking gameplay screenshot 3">
+  <img src="TemplateData/screenshots/shot4.png" alt="Car Parking gameplay screenshot 4">
 </div>
 
 <p>
-Car Parking is a lightweight puzzle-style browser game where players need to move vehicles
-in the correct order to clear the parking area.
+Car Parking is a lightweight puzzle-style browser game where players need to move vehicles in the correct order to clear the parking area.
 </p>
-
 <p>
 The gameplay focuses on logical thinking and short casual sessions.
 </p>
-
-<!-- Screenshots -->
-<div class="screenshots">
-
-<img src="TemplateData/screenshots/shot1.png" alt="Car Parking gameplay screenshot 1">
-<img src="TemplateData/screenshots/shot2.png" alt="Car Parking gameplay screenshot 2">
-<img src="TemplateData/screenshots/shot3.png" alt="Car Parking gameplay screenshot 3">
-<img src="TemplateData/screenshots/shot4.png" alt="Car Parking gameplay screenshot 4">
-
-</div>
-
 </div>
 
 <!-- FUTURE -->
 <div class="section">
 <h2>Future Projects</h2>
-
-<p>
-New browser games are currently in development and will be published on this website.
-</p>
+<p>New browser games are currently in development and will be published on this website.</p>
 </div>
 
 <!-- CONTACT -->
 <div class="section">
 <h2>Contacts</h2>
-
 <p>ClickySoloGames@gmail.com</p>
 </div>
 
 <!-- PRIVACY -->
 <div class="section">
 <h2>Privacy Policy</h2>
-
-<p>
-This website does not collect personal data directly.
-</p>
-
-<p>
-In the future, this website may use third-party services such as advertising networks
-or analytics tools that may use cookies to improve content and advertising relevance.
-</p>
-
-<p>
-Users can control cookie behavior through their browser settings.
-</p>
+<p>This website does not collect personal data directly.</p>
+<p>In the future, this website may use third-party services such as advertising networks or analytics tools that may use cookies to improve content and advertising relevance.</p>
+<p>Users can control cookie behavior through their browser settings.</p>
 </div>
 
 <!-- TERMS -->
 <div class="section">
 <h2>Terms of Use</h2>
-
-<p>
-All content published on this website is provided for entertainment purposes only.
-</p>
-
-<p>
-Unauthorized copying or redistribution of materials without permission is prohibited.
-</p>
+<p>All content published on this website is provided for entertainment purposes only.</p>
+<p>Unauthorized copying or redistribution of materials without permission is prohibited.</p>
 </div>
 
 </div>
@@ -285,7 +238,6 @@ Unauthorized copying or redistribution of materials without permission is prohib
 </footer>
 
 <script>
-
 var canvas=document.querySelector("#unity-canvas");
 var loadingBarFull=document.querySelector("#unity-progress-bar-full");
 
@@ -293,35 +245,26 @@ var buildUrl="Build";
 var loaderUrl=buildUrl+"/BuildWithoutCompression.loader.js";
 
 var config={
-dataUrl:buildUrl+"/BuildWithoutCompression.data",
-frameworkUrl:buildUrl+"/BuildWithoutCompression.framework.js",
-codeUrl:buildUrl+"/BuildWithoutCompression.wasm",
-streamingAssetsUrl:"StreamingAssets",
-companyName:"ClickySoloGames",
-productName:"Car Parking",
-productVersion:"0.1",
-devicePixelRatio:Math.min(2,window.devicePixelRatio||1),
+  dataUrl:buildUrl+"/BuildWithoutCompression.data",
+  frameworkUrl:buildUrl+"/BuildWithoutCompression.framework.js",
+  codeUrl:buildUrl+"/BuildWithoutCompression.wasm",
+  streamingAssetsUrl:"StreamingAssets",
+  companyName:"ClickySoloGames",
+  productName:"Car Parking",
+  productVersion:"0.1",
+  devicePixelRatio:Math.min(2,window.devicePixelRatio||1)
 };
 
 function resizeCanvas(){
-
-let padding=20;
-
-let width=window.innerWidth-padding;
-let height=width*9/16;
-
-let maxHeight=window.innerHeight*0.8;
-
-if(height>maxHeight){
-height=maxHeight;
-width=height*16/9;
-}
-
-canvas.style.width=width+"px";
-canvas.style.height=height+"px";
-canvas.style.display="block";
-canvas.style.margin="0 auto";
-
+  let padding=20;
+  let width=window.innerWidth-padding;
+  let height=width*9/16;
+  let maxHeight=window.innerHeight*0.8;
+  if(height>maxHeight){ height=maxHeight; width=height*16/9; }
+  canvas.style.width=width+"px";
+  canvas.style.height=height+"px";
+  canvas.style.display="block";
+  canvas.style.margin="0 auto"; /* центрирование по горизонтали */
 }
 
 window.addEventListener("resize",resizeCanvas);
@@ -330,13 +273,11 @@ resizeCanvas();
 var script=document.createElement("script");
 script.src=loaderUrl;
 script.onload=()=>{
-createUnityInstance(canvas,config,(progress)=>{
-loadingBarFull.style.width=100*progress+"%";
-});
+  createUnityInstance(canvas,config,(progress)=>{
+    loadingBarFull.style.width=100*progress+"%";
+  });
 };
-
 document.body.appendChild(script);
-
 </script>
 
 </body>
