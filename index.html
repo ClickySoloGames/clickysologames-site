@@ -56,15 +56,17 @@ a:hover { text-decoration: underline; }
 
 /* ==================== Unity контейнер ==================== */
 #unity-container {
+  display: flex;
+  justify-content: center; /* центрирование по горизонтали */
   width: 100%;
-  max-width: 1280px; /* ограничение ширины */
+  max-width: 1280px;
   margin: 30px auto;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 0 30px rgba(0,0,0,0.7);
   background: #111;
   position: relative;
-  padding: 20px 0; /* небольшой padding сверху/снизу */
+  padding: 20px 0; /* верх/низ */
 }
 
 #unity-canvas {
@@ -207,13 +209,13 @@ var config = {
     productVersion: "0.1",
     showBanner: unityShowBanner,
     matchWebGLToCanvasSize: true,
-    devicePixelRatio: 1
+    devicePixelRatio: Math.min(2, window.devicePixelRatio || 1) // резче на телефонах
 };
 
-// Адаптивный ресайз Canvas с ограничением ширины и высоты (для телефонов)
+// Адаптивный ресайз Canvas с центровкой и ограничением по экрану
 function resizeUnityCanvas() {
     let containerWidth = container.clientWidth;
-    let containerHeight = window.innerHeight - 40; // отступ сверху/снизу
+    let containerHeight = window.innerHeight - 40; // padding сверху/снизу
     const maxWidth = 1280;
     containerWidth = Math.min(containerWidth, maxWidth);
     let height = containerWidth * 9 / 16;
@@ -225,6 +227,7 @@ function resizeUnityCanvas() {
 
     canvas.style.width = containerWidth + "px";
     canvas.style.height = height + "px";
+    container.style.justifyContent = "center"; // центрируем Canvas горизонтально
 }
 
 window.addEventListener("resize", resizeUnityCanvas);
