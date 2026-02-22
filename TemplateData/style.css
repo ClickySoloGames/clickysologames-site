@@ -1,105 +1,160 @@
-/* ===== Base ===== */
-body{
-margin:0;
-font-family:Segoe UI,Arial,sans-serif;
-background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-color:#eee;
+/* ===================== BASE ===================== */
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #eee;
 }
 
-/* Контейнер */
-.container{
-max-width:1100px;
-margin:auto;
-padding:30px 20px;
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 30px 20px;
 }
 
-/* Заголовки */
-h1,h2{
-text-align:center;
-margin-bottom:15px;
+h1, h2 {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-/* Текст */
-p{
-line-height:1.7;
-font-size:16px;
-color:#ddd;
+p {
+  line-height: 1.7;
+  font-size: 16px;
+  color: #ddd;
+  text-align: center;
 }
 
-/* ===== Карточки (главное улучшение) ===== */
-.section{
-background:#1a1a2e;
-padding:25px;
-margin:25px 0;
-border-radius:14px;
-box-shadow:0 0 20px rgba(0,0,0,.5);
+/* ===================== SECTIONS ===================== */
+
+.section {
+  background: #1a1a2e;
+  padding: 28px;
+  margin: 30px 0;
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.55);
 }
 
-/* ===== Unity блок ===== */
-#unity-container{
-display:flex;
-flex-direction:column;
-align-items:center;
-background:#111;
-padding:20px;
-border-radius:12px;
-box-shadow:0 0 30px rgba(0,0,0,.7);
-margin-top:20px;
+/* ===================== UNITY ===================== */
+
+#unity-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #111;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 0 35px rgba(0,0,0,0.8);
+  margin-top: 15px;
 }
 
-#unity-canvas{
-background:#000;
-border-radius:8px;
+#unity-canvas {
+  background: #000;
+  border-radius: 10px;
+  max-width: 100%;
+  display: block;
 }
 
-#unity-loading-bar{
-width:80%;
-height:18px;
-background:#333;
-border-radius:10px;
-overflow:hidden;
-margin-top:15px;
+#unity-loading-bar {
+  width: 80%;
+  height: 18px;
+  background: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 15px;
 }
 
-#unity-progress-bar-full{
-width:0%;
-height:100%;
-background:linear-gradient(to right,#00bfff,#00ffdd);
-transition:width .2s;
+#unity-progress-bar-full {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(to right, #00bfff, #00ffdd);
+  transition: width 0.2s;
 }
 
-#unity-footer{
-margin-top:10px;
-color:#aaa;
-text-align:center;
+#unity-footer {
+  margin-top: 12px;
+  color: #aaa;
+  text-align: center;
 }
 
-/* ===== Logo ===== */
-#site-logo{
-position:fixed;
-top:20px;
-right:20px;
-width:80px;
-border-radius:50%;
-box-shadow:0 0 15px rgba(0,0,0,.6);
-z-index:1000;
+/* ===================== LOGO ===================== */
+
+#site-logo {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 80px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  z-index: 1000;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
-/* ===== Footer ===== */
-footer{
-margin-top:60px;
-padding:30px 0;
-background:#141422;
-text-align:center;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
+#site-logo:hover {
+  transform: scale(1.1);
 }
 
-footer p{
-margin:4px 0;
-color:#aaa;
-text-align:center;
-width:100%;
+/* ===================== SCREENSHOTS ===================== */
+
+.screenshots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.screenshots img {
+  width: 240px;
+  max-width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  transition: transform 0.25s;
+}
+
+.screenshots img:hover {
+  transform: scale(1.05);
+}
+
+/* ===================== FOOTER ===================== */
+
+footer {
+  margin-top: 60px;
+  padding: 35px 0;
+  background: #141422;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+footer p {
+  margin: 4px 0;
+  color: #aaa;
+  text-align: center;
+}
+
+/* ===================== MOBILE ===================== */
+
+@media(max-width:768px) {
+
+  .container {
+    padding: 20px 10px;
+  }
+
+  .section {
+    padding: 20px;
+  }
+
+  #unity-canvas {
+    width: 100%;
+    height: auto;
+  }
+
+  #unity-loading-bar {
+    width: 90%;
+  }
+
 }
