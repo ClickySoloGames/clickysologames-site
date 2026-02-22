@@ -1,7 +1,7 @@
 /* ===================== BASE ===================== */
 body {
   margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: Segoe UI, Arial, sans-serif;
   background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
   color: #eee;
 }
@@ -12,11 +12,9 @@ body {
   padding: 30px 20px;
 }
 
-/* ===================== HEADINGS ===================== */
-h1, h2 {
+h1,h2 {
   text-align: center;
   margin-bottom: 10px;
-  font-weight: 700;
 }
 
 p {
@@ -26,13 +24,38 @@ p {
   text-align: center;
 }
 
-/* ===================== SECTIONS ===================== */
-.section {
+/* ===================== NAVIGATION ===================== */
+.nav-bar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
   background: #1a1a2e;
-  padding: 28px;
-  margin: 30px 0;
-  border-radius: 14px;
-  box-shadow: 0 0 25px rgba(0,0,0,.55);
+  padding: 12px 0;
+  gap: 12px;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,.5);
+}
+
+.nav-button {
+  background: #333;
+  border: none;
+  padding: 8px 18px;
+  color: #ccc;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.nav-button:hover {
+  background: #555;
+  color: #fff;
+}
+
+.game-button {
+  background: #00bfff;
+  color: #fff;
 }
 
 /* ===================== UNITY ===================== */
@@ -65,7 +88,7 @@ p {
 #unity-progress-bar-full {
   width: 0%;
   height: 100%;
-  background: linear-gradient(to right, #00bfff, #00ffdd);
+  background: linear-gradient(to right,#00bfff,#00ffdd);
   transition: width 0.2s;
 }
 
@@ -73,6 +96,26 @@ p {
   margin-top: 12px;
   color: #aaa;
   text-align: center;
+}
+
+/* ===================== SCREENSHOTS ===================== */
+.screenshots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.screenshots img {
+  width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,.6);
+  transition: transform 0.2s;
+}
+
+.screenshots img:hover {
+  transform: scale(1.05);
 }
 
 /* ===================== LOGO ===================== */
@@ -83,62 +126,16 @@ p {
   width: 80px;
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(0,0,0,.6);
-  z-index: 2000; /* поверх кнопок */
+  z-index: 2000;
 }
 
-/* ===================== NAV BUTTONS ===================== */
-.nav-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #1f1f3a;
-  display: flex;
-  justify-content: center;
-  padding: 12px 0;
-  z-index: 1500;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.6);
-}
-
-.nav-button {
-  background: #2c2c44;
-  color: #eee;
-  font-weight: 600;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin: 0 8px;
-  transition: background 0.2s, color 0.2s;
-}
-
-.nav-button:hover {
-  background: #555; /* светло-серый при наведении */
-}
-
-.nav-button.game {
-  background: #00bfff; /* постоянный голубой цвет */
-  color: #fff;
-}
-
-/* ===================== SCREENSHOTS ===================== */
-.screenshots {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.screenshots img {
-  width: 220px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-  transition: transform 0.2s;
-}
-
-.screenshots img:hover {
-  transform: scale(1.05);
+/* ===================== SECTIONS ===================== */
+.section {
+  background: #1a1a2e;
+  padding: 28px;
+  margin: 30px 0;
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0,0,0,.55);
 }
 
 /* ===================== FOOTER ===================== */
@@ -147,10 +144,6 @@ footer {
   padding: 35px 0;
   background: #141422;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 footer p {
@@ -161,13 +154,7 @@ footer p {
 
 /* ===================== MOBILE ===================== */
 @media(max-width:768px){
-  .container{
-    padding: 20px 10px;
-  }
-  .section{
-    padding: 20px;
-  }
-  .screenshots img{
-    width: 45%;
-  }
+  .container { padding: 20px 10px; }
+  .section { padding: 20px; }
+  .screenshots img { width: 120px; }
 }
