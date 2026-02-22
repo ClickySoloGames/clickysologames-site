@@ -5,175 +5,7 @@
 <title>ClickySoloGames | Browser Games Developer</title>
 <meta name="description" content="ClickySoloGames is an independent browser game developer creating lightweight HTML5 games using Unity WebGL.">
 <link rel="shortcut icon" href="TemplateData/favicon.ico">
-
-<style>
-/* ===================== BASE ===================== */
-body {
-  margin: 0;
-  font-family: Segoe UI, Arial, sans-serif;
-  background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-  color: #eee;
-  scroll-behavior: smooth;
-}
-
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 30px 20px;
-}
-
-/* ===================== HEADER NAV ===================== */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(20,20,35,0.95);
-  display: flex;
-  justify-content: center;
-  z-index: 1000;
-  padding: 10px 0;
-  gap: 15px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
-
-nav button {
-  background: #4444aa;
-  color: #fff;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-nav button:hover {
-  background: #00bfff;
-}
-
-nav button.active {
-  background: #00ffdd;
-  color: #111;
-}
-
-/* ===================== SECTIONS ===================== */
-h1, h2 {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.section {
-  background: #1a1a2e;
-  padding: 28px;
-  margin: 80px 0 30px 0; /* верхний отступ 80px чтобы навигация не закрывала заголовок */
-  border-radius: 14px;
-  box-shadow: 0 0 25px rgba(0,0,0,.55);
-}
-
-p {
-  line-height: 1.7;
-  font-size: 16px;
-  color: #ddd;
-  text-align: center;
-}
-
-/* ===================== UNITY ===================== */
-#unity-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #111;
-  padding: 20px;
-  border-radius: 14px;
-  box-shadow: 0 0 35px rgba(0,0,0,.8);
-  margin-top: 15px;
-}
-
-#unity-canvas {
-  background: #000;
-  border-radius: 10px;
-  max-width: 100%;
-}
-
-#unity-loading-bar {
-  width: 80%;
-  height: 18px;
-  background: #333;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 15px;
-}
-
-#unity-progress-bar-full {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(to right,#00bfff,#00ffdd);
-  transition: width .2s;
-}
-
-#unity-footer {
-  margin-top: 12px;
-  color: #aaa;
-  text-align: center;
-}
-
-/* ===================== LOGO ===================== */
-#site-logo {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 80px;
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(0,0,0,.6);
-  z-index: 1001;
-}
-
-/* ===================== SCREENSHOTS ===================== */
-.screenshots {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.screenshots img {
-  width: 200px;
-  height: auto;
-  border-radius: 12px;
-  transition: transform 0.3s;
-}
-
-.screenshots img:hover {
-  transform: scale(1.05);
-}
-
-/* ===================== FOOTER ===================== */
-footer {
-  margin-top: 60px;
-  padding: 35px 0;
-  background: #141422;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-footer p {
-  margin: 4px 0;
-  color: #aaa;
-  text-align: center;
-}
-
-/* ===================== MOBILE ===================== */
-@media(max-width:768px){
-  .container { padding: 20px 10px; }
-  .section { padding: 20px; }
-  .screenshots img { width: 45%; }
-}
-</style>
+<link rel="stylesheet" href="TemplateData/style.css">
 </head>
 <body>
 
@@ -182,7 +14,7 @@ footer p {
 
 <!-- NAVIGATION -->
 <nav>
-  <button onclick="scrollToSection('game')">Game</button>
+  <button id="btn-game" onclick="scrollToSection('game')">Game</button>
   <button onclick="scrollToSection('future')">Future Projects</button>
   <button onclick="scrollToSection('terms')">Terms of Use</button>
   <button onclick="scrollToSection('privacy')">Privacy Policy</button>
@@ -193,14 +25,14 @@ footer p {
   <!-- ABOUT -->
   <div class="section" id="about">
     <h1>ClickySoloGames</h1>
-    <p>ClickySoloGames is an independent browser game developer creating lightweight, fast-loading HTML5 games playable directly in modern browsers.</p>
-    <p>Our goal is to design simple and engaging gameplay experiences optimized for desktop and mobile devices without requiring installation.</p>
+    <p>ClickySoloGames is an independent browser game developer focused on creating lightweight, fast-loading and accessible HTML5 games playable directly in modern browsers.</p>
+    <p>The goal is to design simple and engaging gameplay experiences optimized for both desktop and mobile devices without requiring installation.</p>
   </div>
 
   <!-- TECHNOLOGY -->
-  <div class="section" id="technology">
+  <div class="section">
     <h2>Technology</h2>
-    <p>Projects are developed using Unity WebGL and modern browser technologies with strong focus on performance and cross-platform compatibility.</p>
+    <p>Projects are developed using Unity WebGL and modern browser technologies with strong focus on performance optimization and cross-platform compatibility.</p>
     <p>Games are designed to run smoothly across different screen resolutions and devices.</p>
   </div>
 
@@ -219,13 +51,12 @@ footer p {
 
     <!-- Screenshots -->
     <div class="screenshots">
-      <img src="TemplateData/screenshots/shot1.png" alt="Car Parking gameplay screenshot 1">
-      <img src="TemplateData/screenshots/shot2.png" alt="Car Parking gameplay screenshot 2">
-      <img src="TemplateData/screenshots/shot3.png" alt="Car Parking gameplay screenshot 3">
-      <img src="TemplateData/screenshots/shot4.png" alt="Car Parking gameplay screenshot 4">
+      <img src="TemplateData/screenshots/shot1.png" alt="Car Parking screenshot 1">
+      <img src="TemplateData/screenshots/shot2.png" alt="Car Parking screenshot 2">
+      <img src="TemplateData/screenshots/shot3.png" alt="Car Parking screenshot 3">
+      <img src="TemplateData/screenshots/shot4.png" alt="Car Parking screenshot 4">
     </div>
 
-    <!-- Description below screenshots -->
     <p>Car Parking is a lightweight puzzle-style browser game where players need to move vehicles in the correct order to clear the parking area.</p>
     <p>The gameplay focuses on logical thinking and short casual sessions.</p>
   </div>
@@ -243,12 +74,18 @@ footer p {
     <p>Unauthorized copying or redistribution of materials without permission is prohibited.</p>
   </div>
 
-  <!-- PRIVACY -->
+  <!-- PRIVACY POLICY -->
   <div class="section" id="privacy">
     <h2>Privacy Policy</h2>
     <p>This website does not collect personal data directly.</p>
-    <p>Third-party services, such as advertising networks or analytics, may use cookies to improve content relevance.</p>
-    <p>Users can control cookie behavior through browser settings.</p>
+    <p>In the future, this website may use third-party services such as advertising networks or analytics tools that may use cookies to improve content and advertising relevance.</p>
+    <p>Users can control cookie behavior through their browser settings.</p>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section">
+    <h2>Contacts</h2>
+    <p>ClickySoloGames@gmail.com</p>
   </div>
 
 </div>
@@ -259,10 +96,13 @@ footer p {
 </footer>
 
 <script>
+// ================== UNITY ==================
 var canvas=document.querySelector("#unity-canvas");
 var loadingBarFull=document.querySelector("#unity-progress-bar-full");
+
 var buildUrl="Build";
 var loaderUrl=buildUrl+"/BuildWithoutCompression.loader.js";
+
 var config={
   dataUrl:buildUrl+"/BuildWithoutCompression.data",
   frameworkUrl:buildUrl+"/BuildWithoutCompression.framework.js",
@@ -273,17 +113,23 @@ var config={
   productVersion:"0.1",
   devicePixelRatio:Math.min(2,window.devicePixelRatio||1),
 };
+
 function resizeCanvas(){
   let padding=20;
   let width=window.innerWidth-padding;
   let height=width*9/16;
-  let maxHeight=window.innerHeight*0.75;
-  if(height>maxHeight){ height=maxHeight; width=height*16/9; }
+  let maxHeight=window.innerHeight*0.8;
+  if(height>maxHeight){
+    height=maxHeight;
+    width=height*16/9;
+  }
   canvas.style.width=width+"px";
   canvas.style.height=height+"px";
 }
+
 window.addEventListener("resize",resizeCanvas);
 resizeCanvas();
+
 var script=document.createElement("script");
 script.src=loaderUrl;
 script.onload=()=>{
@@ -293,12 +139,12 @@ script.onload=()=>{
 };
 document.body.appendChild(script);
 
-// ================= SCROLL FUNCTION =================
+// ================== SMOOTH SCROLL ==================
 function scrollToSection(id){
   const el=document.getElementById(id);
-  const offset=70; // оставляем 70px сверху чтобы блок не прилипал к навигации
-  const top=el.getBoundingClientRect().top + window.scrollY - offset;
-  window.scrollTo({top:top, behavior:'smooth'});
+  const offset=70; // немного отступа сверху
+  const topPos=el.getBoundingClientRect().top + window.pageYOffset - offset;
+  window.scrollTo({top:topPos, behavior:'smooth'});
 }
 </script>
 
