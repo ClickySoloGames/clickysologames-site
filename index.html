@@ -64,6 +64,7 @@ a:hover { text-decoration: underline; }
   box-shadow: 0 0 30px rgba(0,0,0,0.7);
   background: #111;
   position: relative;
+  padding: 20px 0; /* небольшой padding сверху/снизу */
 }
 
 #unity-canvas {
@@ -95,14 +96,6 @@ a:hover { text-decoration: underline; }
   color: #ff5555;
   text-align: center;
   font-weight: bold;
-}
-
-#unity-logo {
-  width: 120px;
-  height: 30px;
-  background: url('TemplateData/unity-logo.png') no-repeat center center;
-  background-size: contain;
-  margin: 10px auto;
 }
 
 #unity-footer {
@@ -172,6 +165,13 @@ footer p {
       <div id="unity-build-title">Car parking</div>
     </div>
   </div>
+
+  <!-- Contacts & Privacy Policy -->
+  <h2>Contacts</h2>
+  <p>For business inquiries or collaboration: <a href="mailto:ClickySoloGames@gmail.com">ClickySoloGames@gmail.com</a></p>
+
+  <h2>Privacy Policy</h2>
+  <p>This website does not collect personal data directly.</p>
 </div>
 
 <footer>
@@ -210,15 +210,23 @@ var config = {
     devicePixelRatio: 1
 };
 
-// Адаптивный ресайз Canvas с ограничением ширины
+// Адаптивный ресайз Canvas с ограничением ширины и высоты (для телефонов)
 function resizeUnityCanvas() {
-    const containerWidth = container.clientWidth;
-    const maxWidth = 1280; // ограничение
-    const width = Math.min(containerWidth, maxWidth);
-    const height = width * 9 / 16; // 16:9
-    canvas.style.width = width + "px";
+    let containerWidth = container.clientWidth;
+    let containerHeight = window.innerHeight - 40; // отступ сверху/снизу
+    const maxWidth = 1280;
+    containerWidth = Math.min(containerWidth, maxWidth);
+    let height = containerWidth * 9 / 16;
+
+    if (height > containerHeight) {
+        height = containerHeight;
+        containerWidth = height * 16 / 9;
+    }
+
+    canvas.style.width = containerWidth + "px";
     canvas.style.height = height + "px";
 }
+
 window.addEventListener("resize", resizeUnityCanvas);
 resizeUnityCanvas();
 
