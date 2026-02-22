@@ -7,19 +7,15 @@
 <link rel="shortcut icon" href="TemplateData/favicon.ico">
 
 <style>
-  /* Основные стили */
+  /* Общие стили */
   body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.5;
     background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
     color: #eee;
+    line-height: 1.5;
   }
 
-  a { color: #00bfff; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  /* Контейнер страницы */
   .container {
     max-width: 1280px;
     margin: 0 auto;
@@ -28,7 +24,6 @@
 
   h1, h2 {
     margin-top: 40px;
-    font-weight: 700;
     text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
   }
 
@@ -38,7 +33,10 @@
     font-size: 1.1em;
   }
 
-  /* Unity блок */
+  a { color: #00bfff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Unity контейнер */
   #unity-container {
     width: 100%;
     max-width: 1280px;
@@ -50,7 +48,11 @@
     position: relative;
   }
 
-  #unity-canvas { width: 100%; height: auto; display: block; }
+  #unity-canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
   #unity-loading-bar {
     width: 80%;
@@ -76,7 +78,32 @@
     font-weight: bold;
   }
 
-  /* Контакты и футер */
+  #unity-logo {
+    width: 120px;
+    height: 30px;
+    background: url('TemplateData/unity-logo.png') no-repeat center center;
+    background-size: contain;
+    margin: 10px auto;
+  }
+
+  #unity-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    color: #aaa;
+    background: #1c1c2b;
+  }
+
+  #unity-build-title { font-weight: bold; }
+  #unity-webgl-logo {
+    width: 24px;
+    height: 24px;
+    background: url('TemplateData/unity-logo.png') no-repeat center center;
+    background-size: contain;
+  }
+
   footer {
     margin-top: 50px;
     padding: 20px;
@@ -90,18 +117,17 @@
     margin: 5px 0;
     color: #aaa;
   }
-
 </style>
 </head>
 <body>
 
 <div class="container">
   <h1>About ClickySoloGames</h1>
-  <p>ClickySoloGames is an independent HTML5 browser game developer focused on creating simple and engaging casual games. Our projects are designed to run directly in modern web browsers without installation.</p>
-  <p>We experiment with lightweight mechanics, minimalistic visuals, and fast-loading gameplay to ensure accessibility across desktop and mobile platforms.</p>
+  <p>ClickySoloGames is an independent HTML5 browser game developer focused on creating simple and engaging casual games. Our projects run directly in modern browsers without installation.</p>
+  <p>We experiment with lightweight mechanics, minimalistic visuals, and fast-loading gameplay for accessibility on desktop and mobile.</p>
 
   <h2>Games</h2>
-  <p>Our games are published on partner platforms such as Y8, and we continue developing new browser-based experiences that will also be available directly on this website.</p>
+  <p>Our games are published on partner platforms such as Y8, and new browser-based experiences will also be available directly on this site.</p>
 
   <h2>Play our browser game directly online.</h2>
 
@@ -111,7 +137,12 @@
     <div id="unity-loading-bar">
       <div id="unity-progress-bar-full"></div>
     </div>
+    <div id="unity-logo"></div>
     <div id="unity-warning"></div>
+    <div id="unity-footer">
+      <div id="unity-webgl-logo"></div>
+      <div id="unity-build-title">Car parking</div>
+    </div>
   </div>
 
   <h2>Contacts</h2>
@@ -158,7 +189,7 @@
   function resizeCanvas() {
     var width = container.clientWidth;
     canvas.width = width;
-    canvas.height = width * 9 / 16;
+    canvas.height = width * 9 / 16; // 16:9 пропорции
   }
 
   window.addEventListener('resize', resizeCanvas);
