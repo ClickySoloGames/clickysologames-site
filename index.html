@@ -10,31 +10,24 @@
 <body>
 
 <!-- LOGO -->
-<img src="TemplateData/mylogo.png" id="site-logo" alt="ClickySoloGames Logo">
+<img src="TemplateData/mylogo.png" id="site-logo">
 
 <!-- NAVIGATION -->
 <div class="nav-bar">
-  <button class="nav-button game" data-target="game-block">Game</button>
-  <button class="nav-button" data-target="future-block">Future Projects</button>
-  <button class="nav-button" data-target="contacts-block">Contacts</button>
-  <button class="nav-button" data-target="terms-block">Terms of Use</button>
-  <button class="nav-button" data-target="privacy-block">Privacy Policy</button>
+  <button class="nav-button game-button" data-target="game-block">Game</button>
+  <button class="nav-button" data-target="future-projects">Future Projects</button>
+  <button class="nav-button" data-target="contacts">Contacts</button>
+  <button class="nav-button" data-target="terms">Terms of Use</button>
+  <button class="nav-button" data-target="privacy">Privacy Policy</button>
 </div>
 
 <div class="container">
 
   <!-- ABOUT -->
-  <div class="section">
+  <div class="section" id="about">
     <h1>ClickySoloGames</h1>
-    <p>ClickySoloGames is an independent browser game developer focused on creating lightweight, fast-loading and accessible HTML5 games playable directly in modern browsers.</p>
-    <p>The goal is to design simple and engaging gameplay experiences optimized for both desktop and mobile devices without requiring installation.</p>
-  </div>
-
-  <!-- TECHNOLOGY -->
-  <div class="section">
-    <h2>Technology</h2>
-    <p>Projects are developed using Unity WebGL and modern browser technologies with strong focus on performance optimization and cross-platform compatibility.</p>
-    <p>Games are designed to run smoothly across different screen resolutions and devices.</p>
+    <p>Independent browser game developer focused on lightweight HTML5 games.</p>
+    <p>We create fast-loading, accessible games playable directly in modern browsers.</p>
   </div>
 
   <!-- GAME -->
@@ -50,43 +43,42 @@
       <div id="unity-footer">ClickySoloGames Project</div>
     </div>
 
-    <!-- Screenshots below game and description -->
-    <p>Car Parking is a lightweight puzzle-style browser game where players need to move vehicles in the correct order to clear the parking area.</p>
-    <p>The gameplay focuses on logical thinking and short casual sessions.</p>
-
+    <!-- Screenshots -->
     <div class="screenshots">
       <img src="TemplateData/screenshots/shot1.png" alt="Car Parking gameplay screenshot 1">
       <img src="TemplateData/screenshots/shot2.png" alt="Car Parking gameplay screenshot 2">
       <img src="TemplateData/screenshots/shot3.png" alt="Car Parking gameplay screenshot 3">
       <img src="TemplateData/screenshots/shot4.png" alt="Car Parking gameplay screenshot 4">
     </div>
+
+    <p>Car Parking is a lightweight puzzle-style browser game where players move vehicles in order to clear the parking area.</p>
+    <p>The gameplay focuses on logical thinking and short casual sessions.</p>
   </div>
 
   <!-- FUTURE PROJECTS -->
-  <div class="section" id="future-block">
+  <div class="section" id="future-projects">
     <h2>Future Projects</h2>
     <p>New browser games are currently in development and will be published on this website.</p>
   </div>
 
   <!-- CONTACTS -->
-  <div class="section" id="contacts-block">
+  <div class="section" id="contacts">
     <h2>Contacts</h2>
     <p>ClickySoloGames@gmail.com</p>
   </div>
 
-  <!-- TERMS OF USE -->
-  <div class="section" id="terms-block">
+  <!-- TERMS -->
+  <div class="section" id="terms">
     <h2>Terms of Use</h2>
     <p>All content published on this website, including games and visual assets, is provided for entertainment purposes only.</p>
-    <p>Unauthorized copying or redistribution of materials without permission is prohibited.</p>
   </div>
 
-  <!-- PRIVACY POLICY -->
-  <div class="section" id="privacy-block">
+  <!-- PRIVACY -->
+  <div class="section" id="privacy">
     <h2>Privacy Policy</h2>
     <p>This website does not collect personal data directly.</p>
-    <p>In the future, this website may use third-party services such as advertising networks or analytics tools that may use cookies to improve content and advertising relevance.</p>
-    <p>Users can control cookie behavior through their browser settings.</p>
+    <p>Third-party services such as advertising networks or analytics tools may use cookies to improve content and relevance.</p>
+    <p>Users can control cookie behavior through browser settings.</p>
   </div>
 
 </div>
@@ -97,63 +89,64 @@
 </footer>
 
 <script>
-/* ================= UNITY WEBGL ================= */
-var canvas=document.querySelector("#unity-canvas");
-var loadingBarFull=document.querySelector("#unity-progress-bar-full");
+// UNITY
+var canvas = document.querySelector("#unity-canvas");
+var loadingBarFull = document.querySelector("#unity-progress-bar-full");
+var buildUrl = "Build";
+var loaderUrl = buildUrl + "/BuildWithoutCompression.loader.js";
 
-var buildUrl="Build";
-var loaderUrl=buildUrl+"/BuildWithoutCompression.loader.js";
-
-var config={
-dataUrl:buildUrl+"/BuildWithoutCompression.data",
-frameworkUrl:buildUrl+"/BuildWithoutCompression.framework.js",
-codeUrl:buildUrl+"/BuildWithoutCompression.wasm",
-streamingAssetsUrl:"StreamingAssets",
-companyName:"ClickySoloGames",
-productName:"Car Parking",
-productVersion:"0.1",
-devicePixelRatio:Math.min(2,window.devicePixelRatio||1),
+var config = {
+  dataUrl: buildUrl + "/BuildWithoutCompression.data",
+  frameworkUrl: buildUrl + "/BuildWithoutCompression.framework.js",
+  codeUrl: buildUrl + "/BuildWithoutCompression.wasm",
+  streamingAssetsUrl: "StreamingAssets",
+  companyName: "ClickySoloGames",
+  productName: "Car Parking",
+  productVersion: "0.1",
+  devicePixelRatio: Math.min(2, window.devicePixelRatio || 1),
 };
 
-function resizeCanvas(){
-  let padding=20;
-  let width=window.innerWidth-padding;
-  let height=width*9/16;
-  let maxHeight=window.innerHeight*0.8;
-  if(height>maxHeight){
-    height=maxHeight;
-    width=height*16/9;
-  }
-  canvas.style.width=width+"px";
-  canvas.style.height=height+"px";
+// Центрирование игры
+function resizeCanvas() {
+  let padding = 20;
+  let width = window.innerWidth - padding;
+  let height = width * 9/16;
+  let maxHeight = window.innerHeight * 0.8;
+  if (height > maxHeight) { height = maxHeight; width = height * 16/9; }
+  canvas.style.width = width + "px";
+  canvas.style.height = height + "px";
 }
-window.addEventListener("resize",resizeCanvas);
+
+window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
-var script=document.createElement("script");
-script.src=loaderUrl;
-script.onload=()=>{
-  createUnityInstance(canvas,config,(progress)=>{
-    loadingBarFull.style.width=100*progress+"%";
+var script = document.createElement("script");
+script.src = loaderUrl;
+script.onload = () => {
+  createUnityInstance(canvas, config, (progress) => {
+    loadingBarFull.style.width = 100 * progress + "%";
   });
 };
 document.body.appendChild(script);
 
-/* ================= NAVIGATION SCROLL ================= */
-const navButtons=document.querySelectorAll(".nav-button");
-navButtons.forEach(btn=>{
-  btn.addEventListener("click",e=>{
-    const targetId=e.currentTarget.dataset.target;
-    const target=document.getElementById(targetId);
-    let offset=0;
-    if(targetId==="game-block"){
-      // центрируем именно на окно игры
-      const rect=target.querySelector("#unity-container").getBoundingClientRect();
-      offset=rect.top + window.pageYOffset - (window.innerHeight/2 - rect.height/2);
+// NAVIGATION
+const navButtons = document.querySelectorAll(".nav-button");
+navButtons.forEach(btn => {
+  btn.addEventListener("click", e => {
+    const targetId = e.currentTarget.dataset.target;
+    const target = document.getElementById(targetId);
+    let offset = 0;
+
+    if (targetId === "game-block") {
+      const unityContainer = target.querySelector("#unity-container");
+      const rect = unityContainer.getBoundingClientRect();
+      const blockCenter = rect.top + window.pageYOffset + rect.height / 2;
+      offset = blockCenter - window.innerHeight / 2;
     } else {
-      offset=target.offsetTop - 60; // немного ниже верхнего края
+      offset = target.offsetTop - 60; // небольшой отступ сверху
     }
-    window.scrollTo({top:offset,behavior:"smooth"});
+
+    window.scrollTo({ top: offset, behavior: "smooth" });
   });
 });
 </script>
