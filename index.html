@@ -36,6 +36,22 @@
   a { color: #00bfff; text-decoration: none; }
   a:hover { text-decoration: underline; }
 
+  /* Flex для логотипа + заголовка */
+  .header-row {
+    display: flex;
+    align-items: flex-start; /* верх логотипа с верхом текста */
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  #site-logo {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  }
+
   /* Unity контейнер */
   #unity-container {
     width: 100%;
@@ -125,10 +141,14 @@
 </style>
 </head>
 <body>
-  <!-- Логотип -->
-<img src="TemplateData/mylogo.png" id="site-logo" alt="ClickySoloGames Logo">
+
 <div class="container">
-  <h1>About ClickySoloGames</h1>
+  <!-- Верхний блок: логотип и текст -->
+  <div class="header-row">
+    <h1>About ClickySoloGames</h1>
+    <img src="TemplateData/mylogo.png" id="site-logo" alt="ClickySoloGames Logo">
+  </div>
+
   <p>ClickySoloGames is an independent HTML5 browser game developer focused on creating simple and engaging casual games. Our projects run directly in modern browsers without installation.</p>
   <p>We experiment with lightweight mechanics, minimalistic visuals, and fast-loading gameplay for accessibility on desktop and mobile.</p>
 
