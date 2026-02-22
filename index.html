@@ -8,72 +8,56 @@
 
 <style>
 /* ===================== BASE ===================== */
-body {
+body{
   margin:0;
   font-family:Segoe UI,Arial,sans-serif;
   background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
   color:#eee;
-  scroll-behavior: smooth;
 }
-
-.container {
+.container{
   max-width:1100px;
   margin:auto;
   padding:30px 20px;
 }
-
-h1,h2 {
+h1,h2{
   text-align:center;
   margin-bottom:10px;
 }
-
-p {
+p{
   line-height:1.7;
   font-size:16px;
   color:#ddd;
   text-align:center;
 }
 
-/* ===================== NAVIGATION ===================== */
-nav {
+/* ===================== NAV BUTTONS ===================== */
+nav{
   position:fixed;
   top:0;
   width:100%;
-  background:#141422;
+  background:rgba(20,20,30,0.95);
   display:flex;
   justify-content:center;
   padding:10px 0;
-  z-index:1001;
-  box-shadow:0 0 20px rgba(0,0,0,.7);
+  z-index:999;
 }
-
-nav button {
-  background:#333;
-  color:#eee;
-  border:none;
-  margin:0 8px;
+nav button{
+  margin:0 10px;
   padding:10px 20px;
-  cursor:pointer;
+  background:#333;
+  color:#fff;
+  border:none;
   border-radius:8px;
+  cursor:pointer;
+  transition: background 0.2s;
   font-weight:bold;
-  transition:background 0.2s;
 }
-
-nav button:hover {
-  background:#555;
-}
-
-/* ===================== SECTION CARDS ===================== */
-.section {
-  background:#1a1a2e;
-  padding:28px;
-  margin:30px 0;
-  border-radius:14px;
-  box-shadow:0 0 25px rgba(0,0,0,.55);
+nav button:hover{
+  background:#666;
 }
 
 /* ===================== UNITY ===================== */
-#unity-container {
+#unity-container{
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -81,16 +65,14 @@ nav button:hover {
   padding:20px;
   border-radius:14px;
   box-shadow:0 0 35px rgba(0,0,0,.8);
-  margin-top:15px;
+  margin-top:80px;
 }
-
-#unity-canvas {
+#unity-canvas{
   background:#000;
   border-radius:10px;
   max-width:100%;
 }
-
-#unity-loading-bar {
+#unity-loading-bar{
   width:80%;
   height:18px;
   background:#333;
@@ -98,53 +80,58 @@ nav button:hover {
   overflow:hidden;
   margin-top:15px;
 }
-
-#unity-progress-bar-full {
+#unity-progress-bar-full{
   width:0%;
   height:100%;
   background:linear-gradient(to right,#00bfff,#00ffdd);
   transition:width .2s;
 }
-
-#unity-footer {
+#unity-footer{
   margin-top:12px;
   color:#aaa;
   text-align:center;
 }
 
 /* ===================== LOGO ===================== */
-#site-logo {
+#site-logo{
   position:fixed;
   top:20px;
   right:20px;
   width:80px;
   border-radius:50%;
   box-shadow:0 0 15px rgba(0,0,0,.6);
-  z-index:1002;
+  z-index:1000;
+}
+
+/* ===================== SECTIONS ===================== */
+.section{
+  background:#1a1a2e;
+  padding:28px;
+  margin:30px 0;
+  border-radius:14px;
+  box-shadow:0 0 25px rgba(0,0,0,.55);
 }
 
 /* ===================== SCREENSHOTS ===================== */
-.screenshots {
+.screenshots{
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
   gap:15px;
-  margin-top:15px;
+  margin-top:20px;
 }
-
-.screenshots img {
-  width:220px;
-  border-radius:14px;
-  box-shadow:0 0 20px rgba(0,0,0,.5);
+.screenshots img{
+  width:200px;
+  border-radius:12px;
+  box-shadow:0 0 20px rgba(0,0,0,0.5);
   transition: transform 0.2s;
 }
-
-.screenshots img:hover {
-  transform:scale(1.05);
+.screenshots img:hover{
+  transform: scale(1.05);
 }
 
 /* ===================== FOOTER ===================== */
-footer {
+footer{
   margin-top:60px;
   padding:35px 0;
   background:#141422;
@@ -154,8 +141,7 @@ footer {
   align-items:center;
   justify-content:center;
 }
-
-footer p {
+footer p{
   margin:4px 0;
   color:#aaa;
   text-align:center;
@@ -163,9 +149,9 @@ footer p {
 
 /* ===================== MOBILE ===================== */
 @media(max-width:768px){
-  .container{ padding:20px 10px; }
-  .section{ padding:20px; }
-  .screenshots img{ width:45%; }
+  .container{padding:20px 10px;}
+  .section{padding:20px;}
+  .screenshots img{width:45%;}
 }
 </style>
 </head>
@@ -176,11 +162,11 @@ footer p {
 
 <!-- NAVIGATION -->
 <nav>
-  <button id="btn-game" data-target="game">Game</button>
-  <button id="btn-future" data-target="future">Future Projects</button>
-  <button id="btn-contacts" data-target="contacts">Contacts</button>
-  <button id="btn-terms" data-target="terms">Terms of Use</button>
-  <button id="btn-privacy" data-target="privacy">Privacy Policy</button>
+  <button data-target="game" id="btn-game">Game</button>
+  <button data-target="future">Future Projects</button>
+  <button data-target="contacts">Contacts</button>
+  <button data-target="terms">Terms of Use</button>
+  <button data-target="privacy">Privacy Policy</button>
 </nav>
 
 <div class="container">
@@ -188,15 +174,15 @@ footer p {
 <!-- ABOUT -->
 <div class="section" id="section-about">
 <h1>ClickySoloGames</h1>
-<p>ClickySoloGames is an independent browser game developer focused on creating lightweight, fast-loading HTML5 games playable directly in modern browsers.</p>
-<p>We design simple and engaging gameplay experiences optimized for desktop and mobile without requiring installation.</p>
+<p>ClickySoloGames is an independent browser game developer creating lightweight, fast-loading HTML5 games playable directly in modern browsers.</p>
+<p>Our goal is to design simple and engaging gameplay optimized for desktop and mobile without installation.</p>
 </div>
 
 <!-- TECHNOLOGY -->
 <div class="section" id="section-technology">
 <h2>Technology</h2>
 <p>Projects are developed using Unity WebGL and modern browser technologies with strong focus on performance and cross-platform compatibility.</p>
-<p>Games run smoothly on various devices and resolutions.</p>
+<p>Games are designed to run smoothly across different screen resolutions and devices.</p>
 </div>
 
 <!-- GAME -->
@@ -206,25 +192,24 @@ footer p {
 
 <div id="unity-container">
   <canvas id="unity-canvas"></canvas>
-  <div id="unity-loading-bar">
-    <div id="unity-progress-bar-full"></div>
-  </div>
+  <div id="unity-loading-bar"><div id="unity-progress-bar-full"></div></div>
   <div id="unity-footer">ClickySoloGames Project</div>
-</div>
-
-<!-- Screenshots -->
-<div class="screenshots">
-<img src="TemplateData/screenshots/shot1.png" alt="Car Parking screenshot 1">
-<img src="TemplateData/screenshots/shot2.png" alt="Car Parking screenshot 2">
-<img src="TemplateData/screenshots/shot3.png" alt="Car Parking screenshot 3">
-<img src="TemplateData/screenshots/shot4.png" alt="Car Parking screenshot 4">
 </div>
 
 <p>Car Parking is a lightweight puzzle-style browser game where players move vehicles in the correct order to clear the parking area.</p>
 <p>The gameplay focuses on logical thinking and short casual sessions.</p>
+
+<!-- Screenshots BELOW text -->
+<div class="screenshots">
+<img src="TemplateData/screenshots/shot1.png" alt="Car Parking gameplay screenshot 1">
+<img src="TemplateData/screenshots/shot2.png" alt="Car Parking gameplay screenshot 2">
+<img src="TemplateData/screenshots/shot3.png" alt="Car Parking gameplay screenshot 3">
+<img src="TemplateData/screenshots/shot4.png" alt="Car Parking gameplay screenshot 4">
 </div>
 
-<!-- FUTURE PROJECTS -->
+</div>
+
+<!-- FUTURE -->
 <div class="section" id="section-future">
 <h2>Future Projects</h2>
 <p>New browser games are currently in development and will be published on this website.</p>
@@ -236,18 +221,18 @@ footer p {
 <p>ClickySoloGames@gmail.com</p>
 </div>
 
-<!-- TERMS OF USE -->
+<!-- TERMS -->
 <div class="section" id="section-terms">
 <h2>Terms of Use</h2>
 <p>All content published on this website, including games and visual assets, is provided for entertainment purposes only.</p>
-<p>Unauthorized copying or redistribution of materials without permission is prohibited.</p>
 </div>
 
 <!-- PRIVACY -->
 <div class="section" id="section-privacy">
 <h2>Privacy Policy</h2>
 <p>This website does not collect personal data directly.</p>
-<p>Third-party services such as advertising or analytics may use cookies. Users can control cookies through browser settings.</p>
+<p>Third-party services like ads or analytics may use cookies to improve content and advertising relevance.</p>
+<p>Users can control cookies via browser settings.</p>
 </div>
 
 </div>
@@ -258,33 +243,37 @@ footer p {
 </footer>
 
 <script>
-// ===================== UNITY WEBGL =====================
-var canvas=document.querySelector("#unity-canvas");
-var loadingBarFull=document.querySelector("#unity-progress-bar-full");
-var buildUrl="Build";
-var loaderUrl=buildUrl+"/BuildWithoutCompression.loader.js";
-var config={
-  dataUrl:buildUrl+"/BuildWithoutCompression.data",
-  frameworkUrl:buildUrl+"/BuildWithoutCompression.framework.js",
-  codeUrl:buildUrl+"/BuildWithoutCompression.wasm",
-  streamingAssetsUrl:"StreamingAssets",
-  companyName:"ClickySoloGames",
-  productName:"Car Parking",
-  productVersion:"0.1",
-  devicePixelRatio:Math.min(2,window.devicePixelRatio||1),
+// ===================== UNITY LOADER =====================
+var canvas = document.querySelector("#unity-canvas");
+var loadingBarFull = document.querySelector("#unity-progress-bar-full");
+
+var buildUrl = "Build";
+var loaderUrl = buildUrl + "/BuildWithoutCompression.loader.js";
+
+var config = {
+  dataUrl: buildUrl + "/BuildWithoutCompression.data",
+  frameworkUrl: buildUrl + "/BuildWithoutCompression.framework.js",
+  codeUrl: buildUrl + "/BuildWithoutCompression.wasm",
+  streamingAssetsUrl: "StreamingAssets",
+  companyName: "ClickySoloGames",
+  productName: "Car Parking",
+  productVersion: "0.1",
+  devicePixelRatio: Math.min(2,window.devicePixelRatio||1),
 };
 
 function resizeCanvas(){
-  let padding=20;
-  let width=window.innerWidth-padding;
-  let height=width*9/16;
-  let maxHeight=window.innerHeight*0.75;
-  if(height>maxHeight){ height=maxHeight; width=height*16/9; }
-  canvas.style.width=width+"px";
-  canvas.style.height=height+"px";
+  const padding = 20;
+  let width = window.innerWidth - padding*2;
+  let height = width*9/16;
+  const maxHeight = window.innerHeight*0.75;
+  if(height>maxHeight){
+    height = maxHeight;
+    width = height*16/9;
+  }
+  canvas.style.width = width + "px";
+  canvas.style.height = height + "px";
 }
-
-window.addEventListener("resize",resizeCanvas);
+window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
 var script=document.createElement("script");
@@ -296,7 +285,7 @@ script.onload=()=>{
 };
 document.body.appendChild(script);
 
-// ===================== SMOOTH SCROLL & TEMP BUTTON HIGHLIGHT =====================
+// ===================== NAVIGATION SCROLL =====================
 const navButtons = document.querySelectorAll('nav button');
 const sections = {
   game: document.querySelector('#section-game'),
@@ -306,35 +295,25 @@ const sections = {
   privacy: document.querySelector('#section-privacy')
 };
 
-// Статично подсвечиваем кнопку Game
-document.querySelector('#btn-game').style.background = '#00bfff';
-
 navButtons.forEach(btn=>{
   btn.addEventListener('click', e=>{
-    const target=e.target.dataset.target;
+    const target = e.target.dataset.target;
     const block = sections[target];
     if(!block) return;
 
     let scrollTop;
-    if(target==='game'){
-      const rect=block.getBoundingClientRect();
-      scrollTop = window.pageYOffset+(rect.top+rect.height/2)-(window.innerHeight/2);
+    if(target === 'game'){
+      const rect = block.getBoundingClientRect();
+      scrollTop = window.pageYOffset + (rect.top + rect.height/2) - (window.innerHeight/2);
     } else {
-      const offset=80;
+      const offset = 80;
       scrollTop = window.pageYOffset + block.getBoundingClientRect().top - offset;
     }
 
-    window.scrollTo({top:scrollTop, behavior:'smooth'});
-
-    if(target!=='game'){
-      const originalColor = btn.style.background;
-      btn.style.background = '#666';
-      const onScroll = ()=>{
-        btn.style.background = originalColor;
-        window.removeEventListener('scroll', onScroll);
-      };
-      window.addEventListener('scroll', onScroll);
-    }
+    window.scrollTo({
+      top: scrollTop,
+      behavior: 'smooth'
+    });
   });
 });
 </script>
