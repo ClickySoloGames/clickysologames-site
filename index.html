@@ -5,7 +5,6 @@
 <title>ClickySoloGames | Car Parking</title>
 <meta name="description" content="HTML5 browser games developer">
 <link rel="shortcut icon" href="TemplateData/favicon.ico">
-<link rel="stylesheet" href="TemplateData/style.css">
 
 <style>
 /* ==================== Общие стили ==================== */
@@ -16,6 +15,7 @@ body {
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   color: #eee;
   line-height: 1.5;
+  text-align: center;
 }
 
 .container {
@@ -31,7 +31,7 @@ h1, h2 {
 
 p {
   max-width: 900px;
-  margin-bottom: 20px;
+  margin: 10px auto 20px auto;
   font-size: 1.1em;
 }
 
@@ -59,8 +59,8 @@ a:hover { text-decoration: underline; }
 /* ==================== Unity контейнер ==================== */
 #unity-container {
   display: flex;
-  flex-direction: column; /* вертикально */
-  align-items: center;    /* центрируем по горизонтали */
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   max-width: 1280px;
   margin: 30px auto;
@@ -104,26 +104,9 @@ a:hover { text-decoration: underline; }
 
 /* футер внутри контейнера игры */
 #unity-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 15px;
-  font-size: 0.9em;
-  color: #aaa;
-  background: #1c1c2b;
   margin-top: 10px;
-  width: 100%;
-}
-
-#unity-webgl-logo {
-  width: 24px;
-  height: 24px;
-  background: url('TemplateData/unity-logo.png') no-repeat center center;
-  background-size: contain;
-}
-
-#unity-build-title {
-  font-weight: bold;
+  font-size: 1em;
+  color: #aaa;
 }
 
 /* ==================== Footer сайта ==================== */
@@ -168,10 +151,7 @@ footer p {
       <div id="unity-progress-bar-full"></div>
     </div>
     <div id="unity-warning"></div>
-    <div id="unity-footer">
-      <div id="unity-webgl-logo"></div>
-      <div id="unity-build-title">Car parking</div>
-    </div>
+    <div id="unity-footer">Car parking</div>
   </div>
 
   <h2>Contacts</h2>
@@ -217,15 +197,15 @@ var config = {
     devicePixelRatio: Math.min(2, window.devicePixelRatio || 1)
 };
 
-// Адаптивный ресайз Canvas с центровкой
+// Адаптивный ресайз Canvas с сохранением пропорций
 function resizeUnityCanvas() {
-    let containerWidth = container.clientWidth;
-    let containerHeight = window.innerHeight - 60; // padding сверху/снизу
-    let width = containerWidth;
+    let maxWidth = Math.min(window.innerWidth - 40, 1280); // отступы слева/справа
+    let maxHeight = window.innerHeight - 200; // отступы сверху/снизу + текст
+    let width = maxWidth;
     let height = width * 9 / 16;
 
-    if (height > containerHeight) {
-        height = containerHeight;
+    if(height > maxHeight){
+        height = maxHeight;
         width = height * 16 / 9;
     }
 
