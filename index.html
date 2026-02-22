@@ -197,15 +197,21 @@ var config = {
     devicePixelRatio: Math.min(2, window.devicePixelRatio || 1)
 };
 
-// Адаптивный ресайз Canvas с сохранением пропорций
+// Адаптивный ресайз Canvas с учётом мобильного браузера
 function resizeUnityCanvas() {
-    let maxWidth = Math.min(window.innerWidth - 40, 1280); // отступы слева/справа
-    let maxHeight = window.innerHeight - 200; // отступы сверху/снизу + текст
-    let width = maxWidth;
+    let windowWidth = window.innerWidth - 20; // padding слева/справа
+    let windowHeight = window.innerHeight - 20; // padding сверху/снизу, учитываем browser chrome
+
+    // На мобильных устройствах используем почти всю высоту
+    if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)){
+        windowHeight = window.innerHeight * 0.85; // 85% высоты, оставляем сверху для браузера
+    }
+
+    let width = windowWidth;
     let height = width * 9 / 16;
 
-    if(height > maxHeight){
-        height = maxHeight;
+    if(height > windowHeight){
+        height = windowHeight;
         width = height * 16 / 9;
     }
 
